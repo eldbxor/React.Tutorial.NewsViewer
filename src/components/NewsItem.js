@@ -13,7 +13,6 @@ const NewsItemBlock = styled.div`
     }
   }
   .contents {
-    margin-left: 1rem;
     h2 {
       margin: 0;
       a {
@@ -37,7 +36,7 @@ const NewsItem = ({ article }) => {
   return (
     <NewsItemBlock>
       {urlToImage && (
-        <div className="thumnail">
+        <div className="thumbnail">
           <a href={url} target="_blank" rel="noopener noreferrer">
             <img src={urlToImage} alt="thumbnail" />
           </a>
