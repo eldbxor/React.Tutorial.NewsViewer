@@ -23,7 +23,7 @@ const NewsListBlock = styled.div`
 //   urlToImage: 'https://via.placeholder.com/160',
 // };
 
-const NewsList = () => {
+const NewsList = ({ category }) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -31,9 +31,11 @@ const NewsList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        console.log(category);
+        const query = category === 'all' ? '' : `&category=${category}`;
         const apiKey = 'your-api-key';
         const response = await axios.get(
-          'https://newsapi.org/v2/top-headlines?country=kr&apiKey=' + apiKey,
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${apiKey}`,
         );
         setArticles(response.data.articles);
       } catch (e) {
@@ -42,7 +44,7 @@ const NewsList = () => {
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
   if (loading) {
     return <NewsListBlock>대기 중...</NewsListBlock>;
   }
