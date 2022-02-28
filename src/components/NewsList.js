@@ -33,7 +33,8 @@ const NewsList = ({ category }) => {
       try {
         console.log(category);
         const query = category === 'all' ? '' : `&category=${category}`;
-        const apiKey = 'your-api-key';
+        // const apiKey = 'your-api-key';
+        const apiKey = '66a55f13a15d4ebd877fc03ae3952765';
         const response = await axios.get(
           `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${apiKey}`,
         );
